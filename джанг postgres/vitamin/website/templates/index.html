@@ -1,0 +1,337 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная — Детские витамины и БАДы «ВитаМишки»{% endblock %}
+
+{% block content %}
+{% load static %}
+<!-- 1. РЕКЛАМНЫЙ БАННЕР -->
+<!-- 1. ГЛАВНЫЙ РЕКЛАМНЫЙ БАННЕР (ПЕРСИКОВЫЙ СТИЛЬ С ЛОКАЛЬНЫМ ИЗОБРАЖЕНИЕМ) -->
+<section class="p-4 p-md-5 mb-5 rounded-4 shadow-sm border-start border-info border-5 position-relative overflow-hidden" 
+         style="background-color: #fff9f0;">
+    
+    <!-- Декоративный фоновый элемент в виде круга для придания глубины -->
+    <div class="position-absolute rounded-circle bg-info bg-opacity-10 d-none d-lg-block" 
+         style="width: 400px; height: 400px; bottom: -150px; left: -100px; z-index: 1;"></div>
+
+    <div class="row align-items-center position-relative py-2" style="z-index: 2;">
+        <!-- Левая часть: Сильный заголовок и УТП -->
+        <div class="col-lg-7 text-center text-lg-start mb-4 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-2">
+                <!-- По желанию: делаем бейдж зеленым, чтобы он сочетался с темой эко/органики -->
+                <span class="badge bg-success text-white rounded-pill px-3 py-1.5 font-monospace text-uppercase" style="font-size: 0.75rem; letter-spacing: 1px;">Новинка</span>
+
+                <span class="text-success small fw-bold">🌿 100% органический состав</span>
+            </div>
+            
+            <h1 class="fw-black text-dark display-4 mb-3" style="line-height: 1.15;">
+                Здоровье и улыбка <br class="d-none d-xl-block">вашего ребенка!
+            </h1>
+            
+            <p class="fs-5 text-secondary mb-4" style="max-width: 620px;">
+                Натуральные витаминные комплексы в форме вкусных жевательных мишек, капель и сиропов. Бережная поддержка иммунитета, памяти, зубов и активного роста с первых дней жизни.
+            </p>
+            
+            <a href="{% url 'catalog' %}" class="btn btn-warning text-dark btn-lg fw-bold px-5 py-3 rounded-pill shadow-sm transition-all">
+    Перейти в каталог
+</a>
+        </div>
+
+        <!-- Правая часть: Блок с реальной картинкой -->
+        <div class="col-lg-5 text-center d-none d-lg-block">
+                        <img src="static/img/vita.png" alt="Детские витамины ВитаМишки" class="img-fluid object-fit-contain" style="max-height: 320px; filter: drop-shadow(0px 15px 20px rgba(224, 168, 84, 0.2));">
+        </div>
+    </div>
+</section>
+
+
+<!-- 2. БЛОК С УТП И ПРЕИМУЩЕСТВАМИ БРЕНДА -->
+<section class="mb-5 py-4">
+    <h2 class="fw-bold text-center text-secondary mb-4">Почему мамы доверяют «ВитаМишкам»?</h2>
+    <div class="row g-4 text-center">
+        <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 border-top border-primary border-4">
+                <div class="fs-1 mb-2"></div>
+                <h5 class="fw-bold">100% Натурально</h5>
+                <p class="text-muted small mb-0">Используем только натуральные соки ягод и фруктов для вкуса и цвета. Без химии.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 border-top border-success border-4">
+                <div class="fs-1 mb-2"></div>
+                <h5 class="fw-bold">Гипоаллергенно</h5>
+                <p class="text-muted small mb-0">Формулы разработаны без глютена, сои и искусственных консервантов.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 border-top border-warning border-4">
+                <div class="fs-1 mb-2"></div>
+                <h5 class="fw-bold">Стандарт GMP</h5>
+                <p class="text-muted small mb-0">Производство сертифицировано по международным фармацевтическим стандартам.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. ВИТРИНА ТОП-3 ОСНОВНЫХ ПРОДУКТОВ (УВЕЛИЧЕННЫЕ КАРТОЧКИ) -->
+<section class="mb-5">
+    <h2 class="fw-bold text-center text-secondary mb-4">Наши лучшие продукты</h2>
+    
+    <!-- ИСПРАВЛЕНО: row-cols-lg-3 вместо row-cols-lg-5 делает карточки намного шире и читаемее -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for product in top_products %}
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+                    
+                    <!-- ИСПРАВЛЕНО: Увеличили высоту блока до 240px, чтобы картинка не была зажатой -->
+                    <a href="{% url 'product_detail' product.id %}" class="d-block bg-white text-center rounded-top-4 overflow-hidden" style="height: 240px;">
+                        {% with first_variant=product.variants.all.0 %}
+                            {% if first_variant and first_variant.image %}
+                                <!-- ИСПРАВЛЕНО: Поставили object-fit-cover для растягивания на всю ширину и rounded-top-4 -->
+                                <img src="{{ first_variant.image.url }}" alt="{{ product.title }}" class="img-fluid h-100 w-100 object-fit-cover rounded-top-4">
+                            {% else %}
+                                <!-- Заглушка, если картинки нет -->
+                                <div class="d-flex align-items-center justify-content-center h-100 bg-light rounded-top-4">
+                                    <span style="font-size: 4rem;">🧸</span>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    </a>
+
+                    <!-- ИСПРАВЛЕНО: Увеличили внутренний паддинг до p-4 -->
+                    <div class="card-body d-flex flex-column p-4">
+                        
+                        <!-- ИСПРАВЛЕНО: Добавили gap-2 и убрали мелкие шрифты у тегов -->
+                        <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center mb-3">
+                            <span class="badge bg-info text-dark px-2.5 py-1.5 fs-7">{{ product.category.name }}</span>
+                            <span class="badge bg-warning px-2.5 py-1.5 fs-7">👶 {{ product.get_age_category_display }}</span>
+                        </div>
+                        
+                        <!-- ИСПРАВЛЕНО: Увеличили размер заголовка до fs-5, убрали обрезку строки -->
+                        <h5 class="card-title fw-bold mb-3">
+                            <a href="{% url 'product_detail' product.id %}" class="text-dark text-decoration-none transition-link">
+                                {{ product.title }}
+                            </a>
+                        </h5>
+                        
+                        <!-- ИСПРАВЛЕНО: Увеличили размер текста цен до fs-6 -->
+                        <div class="mb-4 bg-light p-3 rounded-3 text-muted" style="font-size: 0.9rem;">
+                            {% for variant in product.variants.all %}
+                                <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                                    <span>{{ variant.get_form_display }} ({{variant.flavor}})</span>
+                                    <span class="fw-bold text-success font-monospace fs-6">{{ variant.price }} ₽</span>
+                                </div>
+                            {% empty %}
+                                <div class="text-danger small">Нет в наличии</div>
+                            {% endfor %}
+                        </div>
+
+                        <!-- ИСПРАВЛЕНО: Кнопка стала крупнее за счет py-2.5 и fs-6 -->
+                        <div class="mt-auto">
+                            <a href="{% url 'product_detail' product.id %}" class="btn btn-primary w-100 py-2.5 fw-bold rounded-3 fs-6 shadow-sm">
+                                Выбрать вариант
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12 text-center py-4">
+                <p class="text-muted fs-5">Каталог товаров временно пуст.</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+<!-- 4. БАННЕР-ПЕРЕХОД НА ИНТЕРАКТИВНЫЙ ТЕСТ -->
+<!-- 4. ИНТЕРАКТИВНЫЙ БАННЕР ТЕСТА (СОВРЕМЕННЫЙ АСИММЕТРИЧНЫЙ СТИЛЬ) -->
+<section class="p-4 p-md-5 mb-5 rounded-4 shadow-sm border-start border-warning border-5 position-relative overflow-hidden" 
+         style="background-color: #eef9f9;">
+    
+    <!-- Декоративный фоновый элемент в виде круга на фоне (простой CSS без картинок) -->
+    <div class="position-absolute rounded-circle bg-warning bg-opacity-25 d-none d-lg-block" 
+         style="width: 300px; height: 300px; top: -100px; right: -100px; z-index: 1;"></div>
+
+    <div class="row align-items-center position-relative" style="z-index: 2;">
+        <!-- Левая часть: Сильный продающий текст -->
+        <div class="col-lg-8 text-center text-lg-start mb-4 mb-lg-0">
+            <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-2">
+                <span class="badge bg-primary text-white rounded-pill px-3 py-1.5 font-monospace text-uppercase" style="font-size: 0.75rem; letter-spacing: 1px;">Интерактив</span>
+                <span class="text-muted small">⏱️ Займет всего 2 минуты</span>
+            </div>
+            
+            <h2 class="fw-black text-dark display-6 mb-3">
+                Не знаете, какие витамины нужны вашему ребенку?
+            </h2>
+            
+            <p class="fs-5 text-secondary mb-0" style="max-width: 750px;">
+                Укажите возраст, особенности рациона и уровень активности вашего малыша. Наша педиатрическая система мгновенно проанализирует дефициты и составит персональную карту безопасных БАД.
+            </p>
+        </div>
+
+        <!-- Правая часть: Контрастный блок с кнопкой-призывом -->
+        <div class="col-lg-4 text-center text-lg-end">
+            <div class="bg-white p-4 rounded-4 shadow-sm border border-light d-inline-block w-100" style="max-width: 340px;">
+                <div class="small text-muted mb-3 text-center">Уже прошли тест: <strong class="text-success">1,420 мам</strong> сегодня</div>
+                
+                <a href="{% url 'quiz' %}" class="btn btn-warning btn-lg text-dark fw-bold w-100 py-3 rounded-pill shadow-sm hover-scale transition-all">
+                    Подобрать витамины 
+                </a>
+                
+                <div class="text-center mt-2">
+                    <span class="text-muted" style="font-size: 0.75rem;">Рекомендовано союзом педиатров</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 5. ИНФОРМАЦИОННЫЙ БЛОК ОБ ИНГРЕДИЕНТАХ -->
+<section class="mb-5 p-4 p-md-5 rounded-4 shadow-sm border border-light" 
+         style="background-color: #f3faf6;"> <!-- Перекрасили весь баннер в нежную эко-пастель -->
+    <div class="row align-items-center g-4">
+        
+        <!-- Левая колонка: Текст и списки -->
+        <div class="col-md-6 col-lg-7">
+            <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="fs-4">🌿</span>
+                <span class="text-success small fw-bold text-uppercase" style="letter-spacing: 0.5px;">Высший стандарт качества</span>
+            </div>
+            
+            <h2 class="fw-bold text-dark mb-4 display-6">
+                Только чистые ингредиенты из сердца природы
+            </h2>
+            
+            <p class="text-secondary fs-6 mb-4" style="line-height: 1.6;">
+                Мы закупаем сырье у проверенных европейских поставщиков. В основе наших комплексов лежат натуральный пектин из яблок и цитрусовых (никакого свиного желатина), органический сироп и экстракты альпийских ягод.
+            </p>
+            
+            <!-- Оформленный список преимуществ -->
+            <ul class="list-unstyled d-flex flex-column gap-3 mt-3 text-secondary fs-6">
+                <li class="d-flex align-items-start gap-2">
+                    <span class="text-success fw-bold">✔</span>
+                    <div><strong>Натуральный витамин D3</strong> из ланолина</div>
+                </li>
+                <li class="d-flex align-items-start gap-2">
+                    <span class="text-success fw-bold">✔</span>
+                    <div><strong>Высокоочищенная Омега-3</strong> из исландского дикого лосося</div>
+                </li>
+                <li class="d-flex align-items-start gap-2">
+                    <span class="text-success fw-bold">✔</span>
+                    <div><strong>Органический цинк и магний</strong> в хелатной (биодоступной) форме</div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Правая колонка: Баночка на прозрачном фоне -->
+        <div class="col-md-6 col-lg-5 text-center d-none d-md-block position-relative">
+            
+            <img src="/static/img/ing.png" 
+                 alt="Натуральные ингредиенты ВитаМишки" 
+                 class="img-fluid object-fit-contain transition-all hover-scale" 
+                 style="max-height: 420px; filter: drop-shadow(0px 15px 25px rgba(40, 167, 69, 0.15));">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- 6. РАЗДЕЛ С МНЕНИЯМИ И РЕКОМЕНДАЦИЯМИ ЭКСПЕРТОВ -->
+<section class="mb-5">
+    <h2 class="fw-bold text-center text-secondary mb-4">Мнение экспертов</h2>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 d-flex gap-3 align-items-start">
+                <img src="/static/img/expert.png" alt="Елена Ковалева — Врач-педиатр" 
+             class="rounded-circle object-fit-cover flex-shrink-0" 
+             style="width: 70px; height: 70px; border: 3px solid #fff9f0; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <div>
+                    <h5 class="fw-bold mb-1">Елена Ковалева</h5>
+                    <p class="text-primary small mb-2">Врач-педиатр высшей категории, стаж 14 лет</p>
+                    <p class="text-muted small mb-0">«В период осенне-весенних дефицитов рацион ребенка обязательно нужно обогащать витамином D3 и йодом. Форма жевательных мишек от "ВитаМишек" идеальна: дети принимают их с удовольствием, без капризов, а дозировки строго соответствуют нормам союза педиатров.»</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 d-flex gap-3 align-items-start">
+                <img src="/static/img/expert.png" alt="Елена Ковалева — Врач-педиатр" 
+             class="rounded-circle object-fit-cover flex-shrink-0" 
+             style="width: 70px; height: 70px; border: 3px solid #fff9f0; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <div>
+                    <h5 class="fw-bold mb-1">Елена Ковалева</h5>
+                    <p class="text-primary small mb-2">Врач-педиатр высшей категории, стаж 14 лет</p>
+                    <p class="text-muted small mb-0">«В период осенне-весенних дефицитов рацион ребенка обязательно нужно обогащать витамином D3 и йодом. Форма жевательных мишек от "ВитаМишек" идеальна: дети принимают их с удовольствием, без капризов, а дозировки строго соответствуют нормам союза педиатров.»</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 d-flex gap-3 align-items-start">
+                <img src="/static/img/expert.png" alt="Елена Ковалева — Врач-педиатр" 
+             class="rounded-circle object-fit-cover flex-shrink-0" 
+             style="width: 70px; height: 70px; border: 3px solid #fff9f0; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <div>
+                    <h5 class="fw-bold mb-1">Елена Ковалева</h5>
+                    <p class="text-primary small mb-2">Врач-педиатр высшей категории, стаж 14 лет</p>
+                    <p class="text-muted small mb-0">«В период осенне-весенних дефицитов рацион ребенка обязательно нужно обогащать витамином D3 и йодом. Форма жевательных мишек от "ВитаМишек" идеальна: дети принимают их с удовольствием, без капризов, а дозировки строго соответствуют нормам союза педиатров.»</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 d-flex gap-3 align-items-start">
+                <img src="/static/img/expert.png" alt="Елена Ковалева — Врач-педиатр" 
+             class="rounded-circle object-fit-cover flex-shrink-0" 
+             style="width: 70px; height: 70px; border: 3px solid #fff9f0; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                <div>
+                    <h5 class="fw-bold mb-1">Елена Ковалева</h5>
+                    <p class="text-primary small mb-2">Врач-педиатр высшей категории, стаж 14 лет</p>
+                    <p class="text-muted small mb-0">«В период осенне-весенних дефицитов рацион ребенка обязательно нужно обогащать витамином D3 и йодом. Форма жевательных мишек от "ВитаМишек" идеальна: дети принимают их с удовольствием, без капризов, а дозировки строго соответствуют нормам союза педиатров.»</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. БЛОК С ОТЗЫВАМИ ПОКУПАТЕЛЕЙ -->
+<section class="mb-5">
+    <h2 class="fw-bold text-center text-secondary mb-4">Отзывы счастливых мам</h2>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 shadow-sm">
+                <div class="text-warning mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="text-muted small mb-3">«Ребенок постоянно отказывался от капсул Омега-3 из-за рыбного вкуса. Эти мишки со вкусом малины стали спасением! Ест с удовольствием, просит еще. Заметила, что стал усидчивее в школе.»</p>
+                <h6 class="fw-bold mb-0">Мария, мама Артема (7 лет)</h6>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 shadow-sm">
+                <div class="text-warning mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="text-muted small mb-3">«Ребенок постоянно отказывался от капсул Омега-3 из-за рыбного вкуса. Эти мишки со вкусом малины стали спасением! Ест с удовольствием, просит еще. Заметила, что стал усидчивее в школе.»</p>
+                <h6 class="fw-bold mb-0">Мария, мама Артема (7 лет)</h6>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 shadow-sm">
+                <div class="text-warning mb-2">⭐⭐⭐⭐⭐</div>
+                <p class="text-muted small mb-3">«Ребенок постоянно отказывался от капсул Омега-3 из-за рыбного вкуса. Эти мишки со вкусом малины стали спасением! Ест с удовольствием, просит еще. Заметила, что стал усидчивее в школе.»</p>
+                <h6 class="fw-bold mb-0">Мария, мама Артема (7 лет)</h6>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. ФОРМА ПОДПИСКИ НА EMAIL-РАССЫЛКУ -->
+<section class="p-5 bg-light rounded-4 border border-secondary border-opacity-25 text-center shadow-sm">
+    <div class="mx-auto" style="max-width: 500px;">
+        <h3 class="fw-bold mb-2">🎁 Полезные советы и скидка 10%</h3>
+        <p class="text-muted small mb-4">Подпишитесь на нашу рассылку. Мы присылаем только статьи от педиатров и закрытые промокоды на витамины.</p>
+        <form method="POST" action="#" class="d-flex gap-2">
+            {% csrf_token %}
+            <input type="email" name="email" class="form-control rounded-pill px-4" placeholder="Ваш рабочий Email" required>
+            <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold">Подписаться</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+<!-- website/templates/website/quiz.html -->
+{% extends 'base.html' %}
+
+{% block title %}Подбор витаминов для ребенка — «ВитаМишки»{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-4">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0 rounded-4 p-4 bg-white">
+            
+            <!-- Индикатор прогресса -->
+            <div class="progress mb-4" style="height: 8px;">
+                <div class="progress-bar bg-warning rounded-pill" role="progressbar" 
+                     style="width: {% if step == 1 %}33%{% elif step == 2 %}66%{% else %}100%{% endif %};"></div>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <!-- ШАГ 1: ВОЗРАСТ -->
+                {% if step == 1 %}
+                    <h3 class="fw-bold text-dark text-center mb-4">👶 Шаг 1: Сколько лет вашему малышу?</h3>
+                    <div class="d-flex flex-column gap-3">
+                        <label class="p-3 border rounded-3 btn-outline-primary d-flex align-items-center justify-content-between cursor-pointer">
+                            <span class="fs-5">0 – 3 года (Малыши)</span>
+                            <input type="radio" name="age" value="0-3" required class="form-check-input">
+                        </label>
+                        <label class="p-3 border rounded-3 btn-outline-primary d-flex align-items-center justify-content-between cursor-pointer">
+                            <span class="fs-5">3 – 7 лет (Дошкольники)</span>
+                            <input type="radio" name="age" value="3-7" class="form-check-input">
+                        </label>
+                        <label class="p-3 border rounded-3 btn-outline-primary d-flex align-items-center justify-content-between cursor-pointer">
+                            <span class="fs-5">7 лет и старше (Школьники)</span>
+                            <input type="radio" name="age" value="7+" class="form-check-input">
+                        </label>
+                    </div>
+                {% endif %}
+
+                <!-- ШАГ 2: ПРОБЛЕМА / ЦЕЛЬ -->
+                {% if step == 2 %}
+                    <h3 class="fw-bold text-dark text-center mb-4">🎯 Шаг 2: Какая главная задача стоит сейчас?</h3>
+                    <div class="d-flex flex-column gap-3">
+                        <label class="p-3 border rounded-3 btn-outline-primary d-flex align-items-center justify-content-between cursor-pointer">
+                            <div><span class="fs-5 d-block">🛡️ Укрепить иммунитет</span><small class="text-muted">Часто болеет в садике или школе</small></div>
+                            <input type="radio" name="goal" value="immunity" required class="form-check-input">
+                        </label>
+                        <label class="p-3 border rounded-3 btn-outline-primary d-flex align-items-center justify-content-between cursor-pointer">
+                            <div><span class="fs-5 d-block">🧠 Внимание и память</span><small class="text-muted">Повышенные нагрузки, утомляемость</small></div>
+                            <input type="radio" name="goal" value="energy" class="form-check-input">
+                        </label>
+                        <label class="p-3 border rounded-3 btn-outline-primary d-flex align-items-center justify-content-between cursor-pointer">
+                            <div><span class="fs-5 d-block">🦴 Активный рост и кости</span><small class="text-muted">Поддержка зубов, баланс кальция</small></div>
+                            <input type="radio" name="goal" value="growth" class="form-check-input">
+                        </label>
+                    </div>
+                {% endif %}
+
+                <!-- ШАГ 3: ФОРМА ВЫПУСКА -->
+                {% if step == 3 %}
+                    <h3 class="fw-bold text-dark text-center mb-4">🍭 Шаг 3: Какую форму витаминов любит ребенок?</h3>
+                    <div class="d-flex flex-column gap-3">
+                        <label class="p-3 border rounded-3 btn-outline-primary d-flex align-items-center justify-content-between cursor-pointer">
+                            <span class="fs-5">🧸 Жевательные мишки (пастилки)</span>
+                            <input type="radio" name="form" value="gummies" required class="form-check-input">
+                        </label>
+                        <label class="p-3 border rounded-3 btn-outline-primary d-flex align-items-center justify-content-between cursor-pointer">
+                            <span class="fs-5">🧪 Натуральный сироп / капли</span>
+                            <input type="radio" name="form" value="syrup" class="form-check-input">
+                        </label>
+                        <label class="p-3 border rounded-3 btn-outline-primary d-flex align-items-center justify-content-between cursor-pointer">
+                            <span class="fs-5">💊 Небольшие капсулы</span>
+                            <input type="radio" name="form" value="capsules" class="form-check-input">
+                        </label>
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill fw-bold shadow-sm mt-4 py-3">
+                    {% if step == 3 %}Узнать результат{% else %}Далее →{% endif %}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

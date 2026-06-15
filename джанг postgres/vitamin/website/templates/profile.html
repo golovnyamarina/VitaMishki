@@ -1,0 +1,126 @@
+<!-- website/templates/website/profile.html -->
+{% extends 'base.html' %}
+
+{% block title %}Личный кабинет — «ВитаМишки»{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    
+    <!-- ЛЕВАЯ КОЛОНКА: ДАННЫЕ ПРОФИЛЯ -->
+    <aside class="col-lg-4">
+        <div class="card shadow-sm border-0 rounded-4 p-4 bg-white text-center">
+            <h4 class="fw-bold text-dark mb-1">Мой профиль</h4>
+            <p class="text-muted small mb-4">Данные для авторизации на сайте</p>
+            
+            <div class="text-start bg-light p-3 rounded-3 mb-3 small font-monospace text-break">
+                <div class="mb-2"><strong>Email:</strong> {{ user.email }}</div>
+                <div><strong>Телефон:</strong> {{ user.phone|default:"Не указан" }}</div>
+            </div>
+            
+            <a href="{% url 'logout' %}" class="btn btn-outline-danger w-100 rounded-pill fw-bold btn-sm py-2">
+                Выйти из аккаунта
+            </a>
+        </div>
+    </aside>
+
+    <!-- ПРАВАЯ КОЛОНКА: ИСТОРИЯ ЗАКАЗОВ -->
+    <section class="col-lg-8">
+        <h3 class="fw-bold text-dark mb-4">История ваших заказов</h3>
+
+        {% if orders %}
+            <div class="accordion d-flex flex-column gap-3" id="ordersAccordion">
+                {% for order in orders %}
+                    <div class="accordion-item border-0 rounded-4 shadow-sm overflow-hidden bg-white">
+                        
+                        <!-- Заголовок карточки заказа (всегда виден) -->
+                        <h2 class="accordion-header" id="heading{{ order.id }}">
+                            <button class="accordion-button collapsed bg-white p-3 d-flex flex-wrap align-items-center gap-3 text-dark" 
+                                    type="button" 
+                                    data-bs-toggle="collapse" 
+                                    data-bs-target="#collapse{{ order.id }}">
+                                
+                                <span class="fw-bold text-primary">№ {{ order.id }}</span>
+                                <span class="text-muted small font-monospace">{{ order.created_at|date:"d.m.Y H:i" }}</span>
+                                
+                                <!-- Динамический цвет бейджа в зависимости от статуса заказа -->
+                                <span class="badge 
+                                    {% if order.status == 'new' %}bg-primary
+                                    {% elif order.status == 'paid' or order.status == 'completed' %}bg-success
+                                    {% elif order.status == 'canceled' %}bg-danger
+                                    {% else %}bg-warning text-dark{% endif %} rounded-pill ms-sm-auto small">
+                                    {{ order.get_status_display }}
+                                </span>
+                                
+                                <span class="fw-bold text-dark font-monospace ms-auto ms-sm-0">{{ order.total_cost }} ₽</span>
+                            </button>
+                        </h2>
+
+                        <!-- Разворачиваемая часть (детали заказа) -->
+                        <div id="collapse{{ order.id }}" class="accordion-collapse collapse" data-bs-parent="#ordersAccordion">
+                            <div class="accordion-body bg-light bg-opacity-50 p-4 border-top border-light">
+                                
+                                <h6 class="fw-bold text-secondary mb-3">Состав посылки:</h6>
+                                <div class="table-responsive bg-white rounded-3 shadow-sm mb-4">
+                                    <table class="table table-borderless align-middle mb-0 small">
+                                        <tbody class="divide-y">
+                                            {% for item in order.items.all %}
+                                                <tr class="border-bottom border-light">
+                                                    <td class="p-3">
+                                                        <a href="{% url 'product_detail' item.variant.product.id %}" class="fw-bold text-dark text-decoration-none">
+                                                            {{ item.variant.product.title }}
+                                                        </a>
+                                                        <span class="d-block text-muted style" style="font-size: 0.8rem;">
+                                                            {{ item.variant.get_form_display }} ({{ item.variant.flavor|default:"Нат." }})
+                                                        </span>
+                                                    </td>
+                                                    <td class="p-3 text-center text-muted font-monospace">{{ item.quantity }} шт.</td>
+                                                    <td class="p-3 text-end fw-bold text-dark font-monospace">{{ item.price }} ₽</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Информация о доставке -->
+                                <div class="bg-white p-3 rounded-3 shadow-sm small row g-2">
+                                    <div class="col-md-6">
+                                        <span class="text-muted d-block mb-1">Получатель:</span>
+                                        <strong>{{ order.receiver_name }} ({{ order.receiver_phone }})</strong>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="text-muted d-block mb-1">Адрес доставки:</span>
+                                        <strong>{{ order.delivery_address }}</strong>
+                                    </div>
+                                    {% if order.comment %}
+                                        <div class="col-12 border-top border-light mt-2 pt-2">
+                                            <span class="text-muted d-block mb-1">Комментарий к заказу:</span>
+                                            <span class="text-secondary font-italic">«{{ order.comment }}»</span>
+                                        </div>
+                                    {% endif %}
+                                    <div class="col-12 border-top border-light mt-3 pt-3 d-flex justify-content-between align-items-center">
+                                        <span class="text-muted small">Хотите купить эти же витамины снова?</span>
+                                        <form action="{% url 'order_repeat' order.id %}" method="POST" class="m-0">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-warning btn-sm fw-bold rounded-pill px-4 shadow-sm text-dark">
+                                                Повторить заказ
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!-- Если заказов еще нет -->
+            <div class="text-center py-5 bg-white rounded-4 shadow-sm">
+                <h5 class="fw-bold text-dark">У вас пока нет заказов</h5>
+                <p class="text-muted small mb-4">Все оформленные вами витамины и БАДы будут отображаться на этой странице.</p>
+                <a href="{% url 'catalog' %}" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm btn-sm">Перейти к покупкам</a>
+            </div>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

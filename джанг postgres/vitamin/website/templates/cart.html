@@ -1,0 +1,110 @@
+<!-- website/templates/website/cart.html -->
+{% extends 'base.html' %}
+
+{% block title %}Ваша корзина — «ВитаМишки»{% endblock %}
+
+{% block content %}
+<h2 class="fw-bold text-dark mb-4">🛒 Корзина покупок</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show rounded-3 small mb-4" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% if cart_items %}
+<div class="row g-4">
+    
+    <!-- СПИСОК ТОВАРОВ (ЛЕВАЯ КОЛОНКА) -->
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+            <div class="table-responsive">
+                <table class="table table-borderless align-middle mb-0">
+                    <thead class="bg-light text-muted small fw-bold text-uppercase">
+                        <tr>
+                            <th class="p-3">Товар</th>
+                            <th class="p-3 text-center">Количество</th>
+                            <th class="p-3 text-end">Цена</th>
+                            <th class="p-3 text-end">Сумма</th>
+                            <th class="p-3 text-center"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y">
+                        {% for item in cart_items %}
+                            <tr class="border-bottom border-light">
+                                <!-- Описание товара, вкуса и формы -->
+                                <td class="p-3">
+                                    <h6 class="fw-bold text-dark mb-1">{{ item.variant.product.title }}</h6>
+                                    <span class="badge bg-info text-dark font-monospace small" style="font-size: 0.75rem;">
+                                        {{ item.variant.get_form_display }} — {{ item.variant.flavor|default:"Натуральный" }}
+                                    </span>
+                                </td>
+                                <!-- Количество -->
+                                <td class="p-3 text-center font-monospace fw-bold">
+                                    {{ item.quantity }} шт.
+                                </td>
+                                <!-- Цена за 1 шт. -->
+                                <td class="p-3 text-end text-muted font-monospace">
+                                    {{ item.variant.price }} ₽
+                                </td>
+                                <!-- Итоговая цена позиции -->
+                                <td class="p-3 text-end fw-bold text-dark font-monospace">
+                                    {{ item.total_price }} ₽
+                                </td>
+                                <!-- Кнопка удаления -->
+                                <td class="p-3 text-center">
+                                    <form action="{% url 'cart_remove' item.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-link link-danger p-0 border-0" title="Удалить">
+                                            ❌
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК ОФОРМЛЕНИЯ ЗАКАЗА (ПРАВАЯ КОЛОНКА) -->
+    <div class="col-lg-4">
+        <div class="card shadow-sm border-0 rounded-4 p-4 sticky-top" style="top: 90px;">
+            <h5 class="fw-bold text-secondary mb-3">Итого по заказу</h5>
+            
+            <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Позиций в корзине:</span>
+                <span class="fw-bold text-dark font-monospace">{{ cart_items.count }}</span>
+            </div>
+            <hr class="my-3">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <span class="text-muted fw-bold">Общая стоимость:</span>
+                <span class="fs-3 fw-bold text-success font-monospace">{{ cart.total_price }} ₽</span>
+            </div>
+            
+            <!-- Ссылаемся на будущую страницу оформления заказа -->
+            <a href="{% url 'order_create' %}" class="btn btn-primary btn-lg w-100 rounded-pill fw-bold shadow-sm py-3">
+                Перейти к оформлению 
+            </a>
+
+            <div class="text-center mt-3">
+                <a href="{% url 'catalog' %}" class="text-muted small text-decoration-none">← Вернуться в каталог</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% else %}
+    <!-- ПУСТАЯ КОРЗИНА -->
+    <div class="text-center py-5 bg-white rounded-4 shadow-sm">
+        <span class="display-1 d-block mb-3">🛒</span>
+        <h4 class="fw-bold text-dark">Ваша корзина пуста</h4>
+        <p class="text-muted small mb-4">Вы еще не добавили ни одного витаминного комплекса для вашего малыша.</p>
+        <a href="{% url 'catalog' %}" class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm">Перейти в каталог</a>
+    </div>
+{% endif %}
+{% endblock %}

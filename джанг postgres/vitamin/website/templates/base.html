@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Детские витамины и БАДы «ВитаМишки»{% endblock %}</title>
+    
+    <!-- Подключаем Bootstrap 5 CSS -->
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">    
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+        <!-- ХЕДЕР (ВЕРХНЯЯ ПАНЕЛЬ С БУРГЕРОМ НА МОБИЛЬНЫХ) -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom py-2 sticky-top">
+    <div class="container">
+        
+        <!-- Логотип компании (Всегда слева) -->
+        <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center text-decoration-none text-primary fw-bold fs-4 m-0 me-2">
+            <span class="ms-2 font-weight-black" 
+          style="font-weight: bold; color: #ffffff; -webkit-text-stroke: 1.5px #0d6efd; filter: drop-shadow(0px 2px 4px rgba(46, 98, 34, 0.15));">
+        ВитаМишки
+    </span>
+        </a>
+
+        <!-- БЛОК КОРЗИНЫ И ПРОФИЛЯ ДЛЯ МОБИЛЬНЫХ (Показывается только на экранах < lg) -->
+        <div class="d-flex align-items-center gap-2 d-lg-none ms-auto me-2">
+            <!-- Иконка Корзины -->
+            <a href="{% url 'cart_detail' %}" class="btn btn-outline-primary btn-sm position-relative rounded-pill px-2.5 py-1.5">
+                🛒
+                {% if user.is_authenticated and user.cart.items.exists %}
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">
+                        {{ user.cart.items.count }}
+                    </span>
+                {% endif %}
+            </a>
+            
+            <!-- Профиль / Вход -->
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="btn btn-primary btn-sm rounded-pill px-2.5 py-1.5">👤</a>
+            {% else %}
+                <a href="{% url 'auth_request' %}" class="btn btn-primary btn-sm rounded-pill px-2.5 py-1.5">Войти</a>
+            {% endif %}
+        </div>
+
+        <!-- КНОПКА-БУРГЕР (Появляется только на мобильных вместо меню) -->
+        <button class="navbar-toggler rounded-3 border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключить навигацию">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- РАЗВОРАЧИВАЕМАЯ ЧАСТЬ (Схлопывается в бургер на мобильных) -->
+        <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+            <!-- Навигационные ссылки -->
+            <ul class="navbar-nav mx-auto fw-medium my-2 my-lg-0">
+                <li class="nav-item">
+                    <a href="{% url 'catalog' %}" class="nav-link px-3 link-dark">Каталог</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-3 link-dark">О компании</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-3 link-dark">Доставка и оплата</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-3 link-dark">Полезно знать</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-3 link-dark">Вопрос-ответ</a>
+                </li>
+            </ul>
+
+            <!-- БЛОК КОРЗИНЫ И ПРОФИЛЯ ДЛЯ КОМПЬЮТЕРОВ (Скрывается на экранах < lg) -->
+            <div class="d-none d-lg-flex align-items-center gap-3">
+                <!-- Кнопка Корзины -->
+                <a href="{% url 'cart_detail' %}" class="btn btn-outline-primary position-relative d-flex align-items-center px-3 py-2 rounded-pill">
+                    🛒 <span class="ms-1">Корзина</span>
+                    {% if user.is_authenticated and user.cart.items.exists %}
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ user.cart.items.count }}
+                        </span>
+                    {% endif %}
+                </a>
+
+                <!-- Личный кабинет / Вход -->
+                {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle rounded-pill px-4" type="button" data-bs-toggle="dropdown">
+                            Личный кабинет
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3 mt-2">
+                            <li><span class="dropdown-item-text text-muted font-monospace small">{{ user.email }}</span></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">Мои заказы</a></li>
+                            <li><a class="dropdown-item text-danger" href="{% url 'logout' %}">Выйти</a></li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <a href="{% url 'auth_request' %}" class="btn btn-primary rounded-pill px-4">Войти</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+    <!-- ОСНОВНОЙ ДИНАМИЧЕСКИЙ КОНТЕНТ СТРАНИЦЫ -->
+    <main class="flex-grow-1 container py-4">
+        {% block content %}
+        <!-- Здесь дочерние шаблоны (index.html, catalog.html) развернут свою верстку -->
+        {% endblock %}
+    </main>
+
+    <!-- ФУТЕР (НИЖНЯЯ ПАНЕЛЬ) -->
+       <!-- ФУТЕР (ОБНОВЛЕННЫЙ СВЕТЛЫЙ И ДЕТСКИЙ СТИЛЬ) -->
+    <footer class="pt-5 pb-4 mt-5 border-top border-light" style="background-color: #f4f5fc;">
+        <div class="container">
+            <div class="row g-4">
+                
+                <!-- Блок ссылок на разделы -->
+                <div class="col-12 col-md-4">
+                    <h5 class="fw-bold mb-3 text-primary">Навигация</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="{% url 'catalog' %}" class="text-secondary text-decoration-none hover-link">Каталог витаминов</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-link">О нашей компании</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-link">Условия доставки и оплаты</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-link">Блог: Полезно знать</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none hover-link">Часто задаваемые вопросы (FAQ)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Блок контактных данных -->
+                <div class="col-12 col-md-4">
+                    <h5 class="fw-bold mb-3 text-primary">Контакты</h5>
+                    <p class="mb-2 text-secondary">📞 <a href="tel:+78005553535" class="text-secondary text-decoration-none hover-link">+7 (800) 555-35-35</a></p>
+                    <p class="mb-2 text-secondary">✉️ <a href="mailto:info@vitamishki.ru" class="text-secondary text-decoration-none hover-link">info@vitamishki.ru</a></p>
+                    <p class="mb-2 text-secondary">📍 г. Москва, ул. Здоровья, д. 10, оф. 4</p>
+                    <p class="small text-muted mt-3">Режим работы: Ежедневно с 09:00 до 21:00 по МСК</p>
+                </div>
+
+                <!-- Блок социальных сетей -->
+                <div class="col-12 col-md-4">
+                    <h5 class="fw-bold mb-3 text-primary">Мы в соцсетях</h5>
+                    <p class="text-secondary small mb-3">Подписывайтесь, чтобы первыми узнавать о скидках на детские витамины и читать советы педиатров!</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://vk.com" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill px-3" title="ВКонтакте">
+                            VKontakte
+                        </a>
+                        <a href="https://telegram.org" target="_blank" class="btn btn-sm btn-outline-info rounded-pill px-3 text-dark" title="Telegram">
+                            Telegram
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Легкая разделительная линия -->
+            <hr class="my-4" style="border-color: #e2eef5;">
+
+            <!-- Авторские права и медицинский дисклеймер -->
+            <div class="row">
+                <div class="col text-center">
+                    <p class="text-muted mb-0" style="font-size: 0.8rem; line-height: 1.5;">
+                        &copy; 2026 Интернет-магазин детских витаминов «ВитаМишки». Все права защищены. <br>
+                        <span class="fw-bold text-uppercase text-secondary" style="font-size: 0.75rem; letter-spacing: 0.5px;">Перед применением БАД обязательно проконсультируйтесь с врачом-педиатром!</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Подключаем Bootstrap 5 JS для работы выпадающего меню ЛК -->
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

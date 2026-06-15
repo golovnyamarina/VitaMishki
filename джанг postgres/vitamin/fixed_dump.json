@@ -1,0 +1,959 @@
+[
+{
+    "model": "sessions.session",
+    "pk": "0thucj0o8owztbta4i2idxsac52gg04m",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRe_StWk6baGDS_ecoWlnBosaSCisjHcXEha6_e-9_1YxbWuJW5UljqyuCtTld8uJnjIdgB9pus-a5mldxqwPRZ-06n5med1O9--gpFr2GodWTJcMeU8htT6AADQEjoNFoA6FZWAbvAHnGI1p0SHgnuXGDkDq8wXOXjcW:1wRxrt:zIKxCeF2MNo96P8VZFzI_dQqBS_pd836innAeUN-x6E",
+        "expire_date": "2026-06-09T19:55:13.864Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "djoksauukv59i0oyr3wevbyty9z8iznn",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRe_StWk6UGhxZdx7hmaYDoIiGGhNjPHutoYNm0n-vPf_R2AMvaN5CkjBhfeTxVHwA4dRHPbshWPMMK68nPKRS0yO-0s5u8EnDPtfi3TnKQN_w-k6yzy3DK3MitzoKi-z5_G8ubuBHtc-tW1Xs2pQkdZksNYGGKAiKL0pLFBj2XPnC6MVlKW3StW2tGBTra2KDkh8f2k7TmQ:1wS1Yv:_k7c76pHe52XIKPc1CR_8BSWzWMotUSbL6HCLSdyINI",
+        "expire_date": "2026-06-09T23:51:53.383Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "gnts5i9p17lg2gl74cqdnkqrwlgj8do2",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRe_StWk6UGhxZdx7hmaYDoIiGGhNjPHutoYNm0n-vPf_R2AMvaN5CkjBhfeTxVHwA4dRHPbshWPMMK68nPKRS0yO-0s5u8EnDPtfi3TnKQN_w-k6yzy3DK3MitzoKi-z5_G8ubuBHtc-tW1Xs2pQkdZksNYGGKAiKL0pLFBj2XPnC6MVlKW3StW2tGBTra2KDkh8f2k7TmQ:1wSAjB:vUMZ04AQTNjHNxPJSuQxW9l34RIvb0c3NoBoRpmazhM",
+        "expire_date": "2026-06-10T09:39:05.385Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "q7bbcg4kivdnn4wyrjhj1pbw10gnf2pv",
+    "fields": {
+        "session_data": "e30:1wS9NJ:5CT7KynA_GxVpL-nF3pHDudQW8bhcVrjL1E9hUh5zEA",
+        "expire_date": "2026-06-10T08:12:25.395Z"
+    }
+},
+{
+    "model": "website.category",
+    "pk": 1,
+    "fields": {
+        "name": "  ",
+        "slug": "vitaminy-dlya-immuniteta"
+    }
+},
+{
+    "model": "website.category",
+    "pk": 2,
+    "fields": {
+        "name": "-3",
+        "slug": "omega-3"
+    }
+},
+{
+    "model": "website.category",
+    "pk": 3,
+    "fields": {
+        "name": "  ",
+        "slug": "kalcij-i-kosti"
+    }
+},
+{
+    "model": "website.category",
+    "pk": 4,
+    "fields": {
+        "name": " D",
+        "slug": "vitamin-d"
+    }
+},
+{
+    "model": "website.category",
+    "pk": 5,
+    "fields": {
+        "name": "   ",
+        "slug": "nervnaya-sistema-i-son"
+    }
+},
+{
+    "model": "website.product",
+    "pk": 2,
+    "fields": {
+        "category": 1,
+        "title": "-  +   ",
+        "description": "               .   ,          .   .",
+        "composition": "  ,   ,   ( ),  ,   ,   .",
+        "usage_instructions": "  3  7    1   1      .    1 .      -.",
+        "age_category": "3-7",
+        "created_at": "2026-05-20T13:03:56.844Z"
+    }
+},
+{
+    "model": "website.product",
+    "pk": 3,
+    "fields": {
+        "category": 2,
+        "title": " -3  ",
+        "description": "     .     ,   ,     .          .",
+        "composition": "     (),   (EPA),   (DHA),    ().",
+        "usage_instructions": "  7    2       (  ).              .",
+        "age_category": "7+",
+        "created_at": "2026-05-20T13:05:05.946Z"
+    }
+},
+{
+    "model": "website.product",
+    "pk": 4,
+    "fields": {
+        "category": 4,
+        "title": "-D3  ",
+        "description": "    D3      3 .     ,     .        .",
+        "composition": " (  D3  ),     (MCT-oil).    .",
+        "usage_instructions": "      1  (500 )      .     ,     .",
+        "age_category": "0-3",
+        "created_at": "2026-05-20T13:06:00.869Z"
+    }
+},
+{
+    "model": "website.product",
+    "pk": 5,
+    "fields": {
+        "category": 3,
+        "title": "-  ",
+        "description": "              .   2 ,        ,    .",
+        "composition": " ,  2 (-7),  D3,   ,   .",
+        "usage_instructions": "  3   5  (  ) 1     .      .",
+        "age_category": "3-7",
+        "created_at": "2026-05-20T13:07:04.035Z"
+    }
+},
+{
+    "model": "website.product",
+    "pk": 6,
+    "fields": {
+        "category": 1,
+        "title": "-  ",
+        "description": "        .       ,              .",
+        "composition": "  ,    ,  ,  ,  , ,  .",
+        "usage_instructions": "  3  7    1  2    (  )   .     - .",
+        "age_category": "3-7",
+        "created_at": "2026-05-20T13:10:21.023Z"
+    }
+},
+{
+    "model": "website.product",
+    "pk": 7,
+    "fields": {
+        "category": 5,
+        "title": " + 6  ",
+        "description": "     .       ,   ,   .    ,   ,        .      .",
+        "composition": "  ( ),  6 ( ),    ,    ,   ,  .",
+        "usage_instructions": "  3  7    1          (  ).    1 .        .",
+        "age_category": "3-7",
+        "created_at": "2026-05-20T13:20:06.014Z"
+    }
+},
+{
+    "model": "website.productvariant",
+    "pk": 3,
+    "fields": {
+        "product": 2,
+        "form": "gummies",
+        "flavor": "",
+        "price": "890.00",
+        "stock": 45,
+        "sku": "MM-IMM-STW-37",
+        "image": "products/malin.png"
+    }
+},
+{
+    "model": "website.productvariant",
+    "pk": 4,
+    "fields": {
+        "product": 2,
+        "form": "gummies",
+        "flavor": "",
+        "price": "890.00",
+        "stock": 0,
+        "sku": "MM-IMM-LEM-37",
+        "image": "products/lemon.png"
+    }
+},
+{
+    "model": "website.productvariant",
+    "pk": 5,
+    "fields": {
+        "product": 3,
+        "form": "capsules",
+        "flavor": "-",
+        "price": "1450.00",
+        "stock": 0,
+        "sku": "OM3-KID-TUT-7",
+        "image": "products/tutti.png"
+    }
+},
+{
+    "model": "website.productvariant",
+    "pk": 6,
+    "fields": {
+        "product": 4,
+        "form": "drops",
+        "flavor": "",
+        "price": "620.00",
+        "stock": 78,
+        "sku": "D3-BABY-NAT-03",
+        "image": "products/kaplu.png"
+    }
+},
+{
+    "model": "website.productvariant",
+    "pk": 7,
+    "fields": {
+        "product": 5,
+        "form": "syrup",
+        "flavor": " ",
+        "price": "1120.00",
+        "stock": 11,
+        "sku": "CA-K2-BAN-37",
+        "image": "products/sirop.png"
+    }
+},
+{
+    "model": "website.productvariant",
+    "pk": 8,
+    "fields": {
+        "product": 6,
+        "form": "gummies",
+        "flavor": " ",
+        "price": "920.00",
+        "stock": 0,
+        "sku": "MM-IMM-BER-37",
+        "image": "products/immun.png"
+    }
+},
+{
+    "model": "website.productvariant",
+    "pk": 9,
+    "fields": {
+        "product": 7,
+        "form": "gummies",
+        "flavor": " ",
+        "price": "980.00",
+        "stock": 38,
+        "sku": "MM-MAG-STR-37",
+        "image": "products/zeml.jpg"
+    }
+},
+{
+    "model": "website.productvariant",
+    "pk": 10,
+    "fields": {
+        "product": 7,
+        "form": "syrup",
+        "flavor": " ",
+        "price": "1050.00",
+        "stock": 18,
+        "sku": "SR-MAG-GRP-37",
+        "image": "products/grape.png"
+    }
+},
+{
+    "model": "website.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$WMjc8hahnRl3CsuR6iIOgZ$xo5fHAW7EWngNesgRLQ/hhlf/xadXaCtaor7TLQxueM=",
+        "last_login": "2026-05-27T09:39:05.365Z",
+        "is_superuser": true,
+        "username": "user",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-05-18T12:04:36.747Z",
+        "email": "user@user.ru",
+        "phone": "71234567890",
+        "is_phone_verified": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "website.user",
+    "fields": {
+        "password": "",
+        "last_login": "2026-05-18T17:53:59.018Z",
+        "is_superuser": false,
+        "username": "pivchik",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-05-18T16:52:27.139Z",
+        "email": "pivchik@gmail.com",
+        "phone": "",
+        "is_phone_verified": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "website.user",
+    "fields": {
+        "password": "",
+        "last_login": "2026-05-19T12:15:03.429Z",
+        "is_superuser": false,
+        "username": "user_79999999999",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-05-19T12:15:03.401Z",
+        "email": "79999999999@vitamishki.local",
+        "phone": "+79999999999",
+        "is_phone_verified": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "website.user",
+    "fields": {
+        "password": "",
+        "last_login": "2026-05-20T22:05:04.896Z",
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-05-20T22:05:04.873Z",
+        "email": "test@test.ru",
+        "phone": null,
+        "is_phone_verified": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "website.cart",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "user@user.ru"
+        ],
+        "created_at": "2026-05-20T13:29:32.097Z",
+        "updated_at": "2026-05-20T13:29:32.097Z"
+    }
+},
+{
+    "model": "website.order",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "user@user.ru"
+        ],
+        "status": "new",
+        "delivery_address": " ., - .., . -,  ., . 12, . 163",
+        "receiver_name": "",
+        "receiver_phone": "79999990122",
+        "comment": "",
+        "total_cost": "3520.00",
+        "created_at": "2026-05-23T16:39:07.227Z",
+        "updated_at": "2026-05-23T16:39:07.227Z"
+    }
+},
+{
+    "model": "website.order",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "user@user.ru"
+        ],
+        "status": "new",
+        "delivery_address": " ., - .., . -,  ., . 12, . 163",
+        "receiver_name": "  ",
+        "receiver_phone": "+79267009750",
+        "comment": "",
+        "total_cost": "3840.00",
+        "created_at": "2026-05-26T23:39:59.735Z",
+        "updated_at": "2026-05-26T23:39:59.735Z"
+    }
+},
+{
+    "model": "website.order",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "user@user.ru"
+        ],
+        "status": "completed",
+        "delivery_address": "",
+        "receiver_name": "",
+        "receiver_phone": "89774260603",
+        "comment": "",
+        "total_cost": "1450.00",
+        "created_at": "2026-05-27T08:32:38.350Z",
+        "updated_at": "2026-05-27T08:33:15.977Z"
+    }
+},
+{
+    "model": "website.order",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "user@user.ru"
+        ],
+        "status": "new",
+        "delivery_address": "",
+        "receiver_name": "",
+        "receiver_phone": "89774260603",
+        "comment": "",
+        "total_cost": "3220.00",
+        "created_at": "2026-05-27T09:40:03.565Z",
+        "updated_at": "2026-05-27T09:40:03.565Z"
+    }
+},
+{
+    "model": "website.orderitem",
+    "pk": 5,
+    "fields": {
+        "order": 4,
+        "variant": 5,
+        "price": "1450.00",
+        "quantity": 2
+    }
+},
+{
+    "model": "website.orderitem",
+    "pk": 6,
+    "fields": {
+        "order": 4,
+        "variant": 6,
+        "price": "620.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "website.orderitem",
+    "pk": 7,
+    "fields": {
+        "order": 5,
+        "variant": 9,
+        "price": "980.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "website.orderitem",
+    "pk": 8,
+    "fields": {
+        "order": 5,
+        "variant": 6,
+        "price": "620.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "website.orderitem",
+    "pk": 9,
+    "fields": {
+        "order": 5,
+        "variant": 7,
+        "price": "1120.00",
+        "quantity": 2
+    }
+},
+{
+    "model": "website.orderitem",
+    "pk": 10,
+    "fields": {
+        "order": 6,
+        "variant": 5,
+        "price": "1450.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "website.orderitem",
+    "pk": 11,
+    "fields": {
+        "order": 7,
+        "variant": 9,
+        "price": "980.00",
+        "quantity": 1
+    }
+},
+{
+    "model": "website.orderitem",
+    "pk": 12,
+    "fields": {
+        "order": 7,
+        "variant": 7,
+        "price": "1120.00",
+        "quantity": 2
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-05-18T12:06:31.877Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "category"
+        ],
+        "object_id": "1",
+        "object_repr": "  ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-05-18T13:33:41.979Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "cart"
+        ],
+        "object_id": "1",
+        "object_repr": " user@user.ru",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-05-18T13:35:09.445Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "1",
+        "object_repr": "  ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0412\\u0438\\u0442\\u0430\\u043c\\u0438\\u043d\\u044b \\u0434\\u043b\\u044f \\u0438\\u043c\\u043c\\u0443\\u043d\\u0438\\u0442\\u0435\\u0442\\u0430 (\\u041c\\u0438\\u0448\\u043a\\u0438 - \\u041c\\u0430\\u043b\\u0438\\u043d\\u0430)\"}}, {\"added\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0412\\u0438\\u0442\\u0430\\u043c\\u0438\\u043d\\u044b \\u0434\\u043b\\u044f \\u0438\\u043c\\u043c\\u0443\\u043d\\u0438\\u0442\\u0435\\u0442\\u0430 (\\u041c\\u0438\\u0448\\u043a\\u0438 - \\u041b\\u0438\\u043c\\u043e\\u043d)\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-05-18T13:40:38.268Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "order"
+        ],
+        "object_id": "1",
+        "object_repr": " 1  18.05.2026",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0422\\u043e\\u0432\\u0430\\u0440 \\u0432 \\u0437\\u0430\\u043a\\u0430\\u0437\\u0435\", \"object\": \"\\u0412\\u0438\\u0442\\u0430\\u043c\\u0438\\u043d\\u044b \\u0434\\u043b\\u044f \\u0438\\u043c\\u043c\\u0443\\u043d\\u0438\\u0442\\u0435\\u0442\\u0430 (\\u041c\\u0438\\u0448\\u043a\\u0438 - \\u041c\\u0430\\u043b\\u0438\\u043d\\u0430) \\u0432 \\u0417\\u0430\\u043a\\u0430\\u0437\\u0435 \\u21161\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-05-18T13:40:48.167Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "order"
+        ],
+        "object_id": "1",
+        "object_repr": " 1  18.05.2026",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-05-19T10:24:24.690Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "1",
+        "object_repr": "  ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0412\\u0438\\u0442\\u0430\\u043c\\u0438\\u043d\\u044b \\u0434\\u043b\\u044f \\u0438\\u043c\\u043c\\u0443\\u043d\\u0438\\u0442\\u0435\\u0442\\u0430 (\\u041c\\u0438\\u0448\\u043a\\u0438 - \\u041c\\u0430\\u043b\\u0438\\u043d\\u0430)\", \"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0432\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442\\u0430\"]}}, {\"changed\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0412\\u0438\\u0442\\u0430\\u043c\\u0438\\u043d\\u044b \\u0434\\u043b\\u044f \\u0438\\u043c\\u043c\\u0443\\u043d\\u0438\\u0442\\u0435\\u0442\\u0430 (\\u041c\\u0438\\u0448\\u043a\\u0438 - \\u041b\\u0438\\u043c\\u043e\\u043d)\", \"fields\": [\"\\u0418\\u0437\\u043e\\u0431\\u0440\\u0430\\u0436\\u0435\\u043d\\u0438\\u0435 \\u0432\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442\\u0430\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-05-20T12:50:47.061Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "order"
+        ],
+        "object_id": "3",
+        "object_repr": " 3  19.05.2026",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-05-20T12:50:51.381Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "order"
+        ],
+        "object_id": "2",
+        "object_repr": " 2  18.05.2026",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-05-20T12:50:55.069Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "order"
+        ],
+        "object_id": "1",
+        "object_repr": " 1  18.05.2026",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-05-20T12:51:05.979Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "cart"
+        ],
+        "object_id": "3",
+        "object_repr": " 79999999999@vitamishki.local",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-05-20T12:51:09.583Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "cart"
+        ],
+        "object_id": "2",
+        "object_repr": " pivchik@gmail.com",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-05-20T12:51:12.282Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "cart"
+        ],
+        "object_id": "1",
+        "object_repr": " user@user.ru",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-05-20T12:51:17.001Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "1",
+        "object_repr": "  ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-05-20T13:02:04.228Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "category"
+        ],
+        "object_id": "2",
+        "object_repr": "-3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2026-05-20T13:02:13.108Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "category"
+        ],
+        "object_id": "3",
+        "object_repr": "  ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2026-05-20T13:02:25.393Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "category"
+        ],
+        "object_id": "4",
+        "object_repr": " D",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2026-05-20T13:03:56.856Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "2",
+        "object_repr": "-  +   ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0443\\u043b\\u044c\\u0442\\u0438-\\u041c\\u0438\\u0448\\u043a\\u0438 \\u0418\\u043c\\u043c\\u0443\\u043d\\u0438\\u0442\\u0435\\u0442 + \\u0421 \\u0438 \\u0426\\u0438\\u043d\\u043a (\\u041c\\u0438\\u0448\\u043a\\u0438 - \\u041c\\u0430\\u043b\\u0438\\u043d\\u0430)\"}}, {\"added\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0443\\u043b\\u044c\\u0442\\u0438-\\u041c\\u0438\\u0448\\u043a\\u0438 \\u0418\\u043c\\u043c\\u0443\\u043d\\u0438\\u0442\\u0435\\u0442 + \\u0421 \\u0438 \\u0426\\u0438\\u043d\\u043a (\\u041c\\u0438\\u0448\\u043a\\u0438 - \\u041b\\u0438\\u043c\\u043e\\u043d)\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2026-05-20T13:05:05.950Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "3",
+        "object_repr": " -3  ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0414\\u0435\\u0442\\u0441\\u043a\\u0430\\u044f \\u041e\\u043c\\u0435\\u0433\\u0430-3 \\u0432\\u044b\\u0441\\u043e\\u043a\\u043e\\u0439 \\u043e\\u0447\\u0438\\u0441\\u0442\\u043a\\u0438 (\\u041a\\u0430\\u043f\\u0441\\u0443\\u043b\\u044b - \\u0422\\u0443\\u0442\\u0442\\u0438-\\u0424\\u0440\\u0443\\u0442\\u0442\\u0438)\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2026-05-20T13:06:00.874Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "4",
+        "object_repr": "-D3  ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0410\\u043a\\u0432\\u0430-D3 \\u0411\\u044d\\u0431\\u0438 \\u041e\\u0440\\u0433\\u0430\\u043d\\u0438\\u0447\\u0435\\u0441\\u043a\\u0438\\u0439 (\\u041a\\u0430\\u043f\\u043b\\u0438 - \\u041d\\u0430\\u0442\\u0443\\u0440\\u0430\\u043b\\u044c\\u043d\\u044b\\u0439)\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2026-05-20T13:07:04.040Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "5",
+        "object_repr": "-  ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041a\\u0430\\u043b\\u044c\\u0446\\u0438\\u0439-\\u041c\\u0438\\u043a\\u0441 \\u0423\\u043c\\u043d\\u044b\\u0439 \\u0420\\u043e\\u0441\\u0442 (\\u0421\\u0438\\u0440\\u043e\\u043f - \\u0421\\u043b\\u0430\\u0434\\u043a\\u0438\\u0439 \\u0411\\u0430\\u043d\\u0430\\u043d)\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2026-05-20T13:10:21.028Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "6",
+        "object_repr": "-  ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0443\\u043b\\u044c\\u0442\\u0438-\\u041c\\u0438\\u0448\\u043a\\u0438 \\u042f\\u0433\\u043e\\u0434\\u043d\\u044b\\u0439 \\u0429\\u0438\\u0442 (\\u041c\\u0438\\u0448\\u043a\\u0438 - \\u041b\\u0435\\u0441\\u043d\\u044b\\u0435 \\u042f\\u0433\\u043e\\u0434\\u044b)\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2026-05-20T13:10:33.376Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "2",
+        "object_repr": "-  +   ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0443\\u043b\\u044c\\u0442\\u0438-\\u041c\\u0438\\u0448\\u043a\\u0438 \\u0418\\u043c\\u043c\\u0443\\u043d\\u0438\\u0442\\u0435\\u0442 + \\u0421 \\u0438 \\u0426\\u0438\\u043d\\u043a (\\u041c\\u0438\\u0448\\u043a\\u0438 - \\u041b\\u0438\\u043c\\u043e\\u043d)\", \"fields\": [\"\\u041e\\u0441\\u0442\\u0430\\u0442\\u043e\\u043a \\u043d\\u0430 \\u0441\\u043a\\u043b\\u0430\\u0434\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2026-05-20T13:10:40.461Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "3",
+        "object_repr": " -3  ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u0414\\u0435\\u0442\\u0441\\u043a\\u0430\\u044f \\u041e\\u043c\\u0435\\u0433\\u0430-3 \\u0432\\u044b\\u0441\\u043e\\u043a\\u043e\\u0439 \\u043e\\u0447\\u0438\\u0441\\u0442\\u043a\\u0438 (\\u041a\\u0430\\u043f\\u0441\\u0443\\u043b\\u044b - \\u0422\\u0443\\u0442\\u0442\\u0438-\\u0424\\u0440\\u0443\\u0442\\u0442\\u0438)\", \"fields\": [\"\\u041e\\u0441\\u0442\\u0430\\u0442\\u043e\\u043a \\u043d\\u0430 \\u0441\\u043a\\u043b\\u0430\\u0434\\u0435\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2026-05-20T13:14:59.318Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "category"
+        ],
+        "object_id": "5",
+        "object_repr": "   ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2026-05-20T13:20:06.023Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "product"
+        ],
+        "object_id": "7",
+        "object_repr": " + 6  ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0430\\u0433\\u043d\\u0438\\u0439 + \\u04126 \\u0421\\u043f\\u043e\\u043a\\u043e\\u0439\\u043d\\u044b\\u0439 \\u041c\\u0430\\u043b\\u044b\\u0448 (\\u041c\\u0438\\u0448\\u043a\\u0438 - \\u041b\\u0435\\u0441\\u043d\\u0430\\u044f \\u0417\\u0435\\u043c\\u043b\\u044f\\u043d\\u0438\\u043a\\u0430)\"}}, {\"added\": {\"name\": \"\\u0412\\u0430\\u0440\\u0438\\u0430\\u043d\\u0442 \\u0442\\u043e\\u0432\\u0430\\u0440\\u0430\", \"object\": \"\\u041c\\u0430\\u0433\\u043d\\u0438\\u0439 + \\u04126 \\u0421\\u043f\\u043e\\u043a\\u043e\\u0439\\u043d\\u044b\\u0439 \\u041c\\u0430\\u043b\\u044b\\u0448 (\\u0421\\u0438\\u0440\\u043e\\u043f - \\u0421\\u043f\\u0435\\u043b\\u044b\\u0439 \\u0412\\u0438\\u043d\\u043e\\u0433\\u0440\\u0430\\u0434)\"}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2026-05-27T08:33:15.978Z",
+        "user": [
+            "user@user.ru"
+        ],
+        "content_type": [
+            "website",
+            "order"
+        ],
+        "object_id": "6",
+        "object_repr": " 6  27.05.2026",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0421\\u0442\\u0430\\u0442\\u0443\\u0441\"]}}]"
+    }
+}
+]

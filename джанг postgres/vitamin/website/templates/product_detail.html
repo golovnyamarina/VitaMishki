@@ -1,0 +1,217 @@
+<!-- website/templates/website/product_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ product.title }} — Детские витамины «ВитаМишки»{% endblock %}
+
+{% block content %}
+<div class="row g-5">
+    
+    <!-- ЛЕВАЯ КОЛОНКА: ВИЗУАЛ (ИКОНКА) -->
+    <div class="col-md-5 text-center bg-white p-5 rounded-4 shadow-sm d-flex align-items-center justify-content-center" style="min-height: 400px;">
+        <img id="product-main-image" src="" alt="{{ product.title }}" class="img-fluid object-fit-contain d-none rounded-4" style="max-height: 400px;">
+        <!-- Блок-заглушка на случай, если у варианта нет фото -->
+        <div id="product-image-placeholder" class="d-none">
+            <span style="font-size: 12rem;">🧸</span>
+        </div>
+    </div>
+
+    <!-- ПРАВАЯ КОЛОНКА: ИНФОРМАЦИЯ И ПОКУПКА -->
+    <div class="col-md-7">
+        <div class="d-flex gap-2 mb-3">
+            <span class="badge bg-info text-dark px-3 py-2 rounded-pill">{{ product.category.name }}</span>
+            <span class="badge bg-secondary px-3 py-2 rounded-pill">{{ product.get_age_category_display }}</span>
+        </div>
+
+        <h1 class="fw-bold text-dark mb-3">{{ product.title }}</h1>
+        
+        <!-- ЦЕНА И АРТИКУЛ (МЕНЯЮТСЯ ДИНАМИЧЕСКИ ЧЕРЕЗ JS) -->
+        <div class="bg-white p-4 rounded-4 shadow-sm mb-4 d-flex justify-content-between align-items-center border border-primary border-opacity-10">
+            <div>
+                <span class="text-muted small d-block mb-1">Стоимость:</span>
+                <span id="product-price" class="fs-2 fw-bold text-success">0.00</span> <span class="fs-4 fw-bold text-success">₽</span>
+            </div>
+            <div class="text-end">
+                <span class="text-muted small d-block mb-1">Артикул:</span>
+                <span id="product-sku" class="font-monospace fw-bold text-secondary">—</span>
+            </div>
+        </div>
+
+        <!-- СПЕЦИФИКА ТОВАРА: ВЫБОР ФОРМЫ И ВКУСА -->
+        <form id="add-to-cart-form" action="{% url 'cart_add' product.id %}" method="POST" class="mb-4 bg-white p-4 rounded-4 shadow-sm">
+            {% csrf_token %}
+            <h5 class="fw-bold text-secondary mb-3">Выберите форму и вкус:</h5>
+            
+            <div class="mb-4">
+                <label class="form-label small fw-bold text-muted">Доступные варианты выпуска</label>
+                <select id="variant-select" name="variant_id" class="form-select form-select-lg rounded-3 border-primary border-opacity-25">
+                    {% for variant in product.variants.all %}
+                        <option value="{{ variant.id }}" 
+                                data-price="{{ variant.price }}" 
+                                data-sku="{{ variant.sku }}"
+                                data-stock="{{ variant.stock }}"
+                                data-image="{% if variant.image %}{{ variant.image.url }}{% endif %}">
+                            {{ variant.get_form_display }} — {{ variant.flavor|default:"Натуральный вкус" }} 
+                            {% if variant.stock == 0 %}(Нет в наличии){% endif %}
+                        </option>
+                    {% empty %}
+                        <option value="" disabled selected>Товара нет в наличии</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Количество и кнопка добавления -->
+            <div class="row g-2 align-items-center">
+                <div class="col-3 col-md-2">
+                    <input type="number" id="quantity-input" name="quantity" class="form-control form-control-lg text-center rounded-3" value="1" min="1" max="1">
+                </div>
+                <div class="col-9 col-md-10">
+                    <button type="submit" id="add-to-cart-btn" class="btn btn-primary btn-lg w-100 fw-bold rounded-pill shadow-sm">
+                        🛒 Добавить в корзину
+                    </button>
+                </div>
+            </div>
+            <div id="stock-warning" class="text-danger small mt-2 d-none">Данного варианта осталось мало на складе!</div>
+        </form>
+    </div>
+</div>
+
+<!-- НИЖНИЙ БЛОК: СОСТАВ, ИНСТРУКЦИИ, ХАРАКТЕРИСТИКИ -->
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="bg-white p-5 rounded-4 shadow-sm">
+            <!-- Вкладки навигации по описанию -->
+            <ul class="nav nav-pills mb-4 border-bottom pb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link rounded-pill px-4 me-2 fw-bold" id="comp-tab" data-bs-toggle="pill" data-bs-target="#desc-content">Описание</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link rounded-pill px-4 me-2 fw-bold" id="comp-tab" data-bs-toggle="pill" data-bs-target="#comp-content">Состав и компоненты</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link rounded-pill px-4 fw-bold" id="usage-tab" data-bs-toggle="pill" data-bs-target="#usage-content">Дозировки и применение</button>
+                </li>
+            </ul>
+            
+            <!-- Содержимое вкладок -->
+            <div class="tab-content" id="pills-tabContent">
+                <!-- Описание -->
+                <div class="tab-pane fade show active" id="desc-content">
+                    <p class="text-muted leading-relaxed" style="white-space: pre-line;">{{ product.description }}</p>
+                </div>
+                <!-- Состав -->
+                <div class="tab-pane fade" id="comp-content">
+                    <div class="p-3 bg-light rounded-3 border-start border-primary border-4 mb-3">
+                        <strong class="text-dark">Важная информация для родителей:</strong> Продукт не содержит искусственных красителей, ароматизаторов и консервантов. Полностью гипоаллергенно.
+                    </div>
+                    <p class="text-muted font-monospace" style="white-space: pre-line;">{{ product.composition }}</p>
+                </div>
+                <!-- Дозировки -->
+                <div class="tab-pane fade" id="usage-content">
+                    <p class="text-muted" style="white-space: pre-line;">{{ product.usage_instructions }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- СКРИПТ ИНТЕРАКТИВНОГО ОБНОВЛЕНИЯ ДАННЫХ ПРИ СМЕНЕ ВКУСА -->
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const variantSelect = document.getElementById('variant-select');
+    const priceDisplay = document.getElementById('product-price');
+    const skuDisplay = document.getElementById('product-sku');
+    const cartBtn = document.getElementById('add-to-cart-btn');
+    const stockWarning = document.getElementById('stock-warning');
+    
+    // 1. СНАЧАЛА ОБЯЗАТЕЛЬНО НАХОДИМ ПОЛЕ ВВОДА КОЛИЧЕСТВА ПО ID
+    const quantityInput = document.getElementById('quantity-input');
+    const mainImage = document.getElementById('product-main-image');
+    const imagePlaceholder = document.getElementById('product-image-placeholder');
+    function updateVariantInfo() {
+        // Ищем выбранную строчку в выпадающем списке
+        const selectedOption = variantSelect.options[variantSelect.selectedIndex];
+        
+        if (!selectedOption || selectedOption.disabled) {
+            priceDisplay.textContent = '0.00';
+            skuDisplay.textContent = '—';
+            cartBtn.disabled = true;
+            
+            // Если вариант не выбран, блокируем ввод количества
+            if (quantityInput) quantityInput.disabled = true;
+            return;
+        }
+
+        // Достаем скрытые атрибуты data-
+        const price = selectedOption.getAttribute('data-price');
+        const sku = selectedOption.getAttribute('data-sku');
+        const stock = parseInt(selectedOption.getAttribute('data-stock'), 10);
+        
+        // Обновляем текст на экране
+        priceDisplay.textContent = parseFloat(price).toLocaleString('ru-RU', { minimumFractionDigits: 2 });
+        skuDisplay.textContent = sku;
+
+        // Логика проверки остатков на складе
+        if (stock === 0) {
+            cartBtn.disabled = true;
+            cartBtn.textContent = '❌ Нет в наличии';
+            stockWarning.classList.add('d-none');
+            
+            // ЕСЛИ ТОВАРА НЕТ: обнуляем и блокируем поле ввода количества
+            if (quantityInput) {
+                quantityInput.value = 0;
+                quantityInput.disabled = true;
+            }
+        } else {
+            cartBtn.disabled = false;
+            cartBtn.textContent = '🛒 Добавить в корзину';
+            
+            // ТУТ НАЧИНАЕТСЯ НАША ДОРАБОТКА ДЛЯ ОГРАНИЧЕНИЯ КОЛИЧЕСТВА:
+            if (quantityInput) {
+                quantityInput.disabled = false;
+                quantityInput.max = stock; // Задаем браузерный максимум для стрелочек
+                
+                // Если в поле стоял 0 (от прошлого товара), ставим 1
+                if (parseInt(quantityInput.value, 10) < 1) {
+                    quantityInput.value = 1;
+                }
+                
+                // Если текущее число в поле больше, чем есть на складе, принудительно снижаем до максимума
+                if (parseInt(quantityInput.value, 10) > stock) {
+                    quantityInput.value = stock;
+                }
+            }
+            
+            if (stock < 5) {
+                stockWarning.classList.remove('d-none'); // Показываем предупреждение если мало
+            } else {
+                stockWarning.classList.add('d-none');
+            }
+        }
+        
+        // Автоматическое обновление action у формы под текущий выбранный ID
+        const cartForm = document.getElementById('add-to-cart-form');
+        if (cartForm && selectedOption.value) {
+            cartForm.action = "/cart/add/" + selectedOption.value + "/";
+        }
+        const imageUrl = selectedOption.getAttribute('data-image');
+
+        if (imageUrl) {
+            mainImage.src = imageUrl;
+            mainImage.classList.remove('d-none');
+            imagePlaceholder.classList.add('d-none');
+        } else {
+            mainImage.classList.add('d-none');
+            imagePlaceholder.classList.remove('d-none');
+        }
+    }
+
+    // Следим за изменениями в выпадающем списке
+    variantSelect.addEventListener('change', updateVariantInfo);
+    
+    // Запускаем один раз при загрузке страницы
+    updateVariantInfo();
+    });
+</script>
+{% endblock %}
