@@ -1,4 +1,4 @@
-# 🐻 ВитаМишки (VitaBears) — e-commerce платформа детских витаминов и БАД
+# 🐻 ВитаМишки (VitaMishki) — e-commerce платформа детских витаминов и БАД
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue.svg)
 ![Django](https://img.shields.io/badge/Django-6.0-092E20.svg)
