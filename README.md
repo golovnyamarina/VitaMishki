@@ -82,5 +82,33 @@
    python manage.py runserver
    ```
 
+## Интерфейс сайта
+*Главная страница*
+
+<img width="1904" height="917" alt="image" src="https://github.com/user-attachments/assets/3ea217ce-4311-47d1-a4f1-ae3927ecf795" />
+
+*Каталог*
+
+<img width="1906" height="916" alt="image" src="https://github.com/user-attachments/assets/812a1443-a769-4cba-984d-dc0084233623" />
+
+*Детали товара*
+
+<img width="1905" height="917" alt="image" src="https://github.com/user-attachments/assets/c79bb4bb-b5e2-4aad-b108-a9d25a58e58a" />
+
+*Вход на сайт*
+<img width="1917" height="920" alt="image" src="https://github.com/user-attachments/assets/3f48c4f8-6073-4c27-8526-a339418c31f8" />
+
+*Корзина*
+
+<img width="1916" height="920" alt="image" src="https://github.com/user-attachments/assets/f2e92393-ee57-450a-9d68-9a9a6f6e980b" />
+
+*Оформление заказа*
+
+<img width="1905" height="920" alt="image" src="https://github.com/user-attachments/assets/8db24382-a70b-4424-8f98-a8edf03e54f1" />
+
+*Личный кабинет*
+
+<img width="1906" height="916" alt="image" src="https://github.com/user-attachments/assets/71cd5629-ba92-4ea4-a8c4-6014ccd3e10b" />
+
 ---
 *Проект разработан как демонстрация архитектурных навыков в разработке специализированного e-commerce.*
