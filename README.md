@@ -55,7 +55,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/yourusername/vitabears.git
+   git clone https://github.com/golovnyamarina/VitaMishki.git
    cd vitabears
    ```
 
